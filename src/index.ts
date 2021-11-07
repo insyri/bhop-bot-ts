@@ -20,6 +20,22 @@ const commandClient = new CommandClient(client, {
   useClusterClient: false,
 });
 
+client.on("messageCreate", async (payload) => {
+  if (payload.message.author.isMe) return;
+  if (payload.message.content.startsWith(PREFIX)) return;
+  if (Math.random() < 1 / 300) return;
+  let messages: string[] = [
+    "*Allegedly..*",
+    ":thinking: *Hmmmm..*",
+    "~~Emily~~ Cobalt is so hot! :heart_eyes: *don't tell my husband tho..* :eyes:",
+    "I had so much fun last night titanicguy! :heart::eggplant::sweat_drops:",
+    '*"hi"* - drewfc',
+    "*Shivers..*",
+  ];
+  let seed = Math.floor(Math.random() * messages.length);
+  payload.message.reply(messages[seed]);
+});
+
 (async () => {
   await client.run();
   client.gateway.setPresence({

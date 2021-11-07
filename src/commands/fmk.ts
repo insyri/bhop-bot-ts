@@ -1,25 +1,26 @@
 import { CommandClient } from "detritus-client";
 import { BaseCommand } from "../basecommand";
 
-export default class FMK extends BaseCommand {
+//broken
+export default class FuckMarryKill extends BaseCommand {
   constructor(client: CommandClient) {
     super(client, {
       name: "fmk",
       aliases: ["fuckmarrykill"],
       args: [
         {
-          name: "user",
-          type: "user",
+          name: "firstUser",
+          type: "string",
           required: true,
         },
         {
-          name: "user",
-          type: "user",
+          name: "secondUser",
+          type: "string",
           required: true,
         },
         {
-          name: "user",
-          type: "user",
+          name: "thirdUser",
+          type: "string",
           required: true,
         },
       ],
@@ -27,9 +28,11 @@ export default class FMK extends BaseCommand {
       metadata: {
         description: "Get the latency time of discord's API in milliseconds.",
       },
-      run: async (context, args) => {
-        console.log(context, args);
-        await context.reply(`[**FMK**] 😮 \`I would f**k ${args}\``);
+      run: async (ctx, args: string) => {
+        //args += args.split(" ");
+        ////@ts-ignore
+        //console.log(args instanceof Array);
+        await ctx.reply(`[**FMK**] 😮 \`I would f**k ${args}\``);
       },
     });
   }

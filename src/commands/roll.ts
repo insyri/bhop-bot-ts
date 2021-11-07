@@ -17,9 +17,9 @@ export default class Roll extends BaseCommand {
       metadata: {
         description: "Roll a number up to any number, default is 100.",
       },
-      run: async (context, args: { number: number; roll: string }) => {
+      run: async (ctx, args: { number: number; roll: string }) => {
         console.log(args);
-        await context.reply(
+        await ctx.reply(
           `[**Roll**] 🎲 \`${Math.floor(
             Math.random() * Number(args.roll || args.number)
           )}\``

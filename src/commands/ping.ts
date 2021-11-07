@@ -11,13 +11,10 @@ export default class Ping extends BaseCommand {
       metadata: {
         description: "Get the latency time of discord's API in milliseconds.",
       },
-      run: async (context) => {
-        await context.reply(
-          `${zeroWidthSpace}\nClient: ${
-            (
-              await context.client.ping()
-            ).rest
-          }ms\n` + `Gateway: ${await context.gateway.ping()}ms`
+      run: async (ctx) => {
+        await ctx.reply(
+          `${zeroWidthSpace}\nClient: ${(await ctx.client.ping()).rest}ms\n` +
+            `Gateway: ${await ctx.gateway.ping()}ms`
         );
       },
     });
