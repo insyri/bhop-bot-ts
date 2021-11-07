@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 17.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 17.0.1
+          check-latest: true
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
