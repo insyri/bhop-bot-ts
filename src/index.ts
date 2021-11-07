@@ -3,9 +3,12 @@ dotenv.config();
 
 import { CommandClient, ShardClient } from "detritus-client";
 
-const { TOKEN, PREFIX } = {
+const packagejson = require("../package.json");
+
+const { TOKEN, PREFIX, VERSION } = {
   TOKEN: process.env.TOKEN!,
   PREFIX: process.env.PREFIX!,
+  VERSION: <string>packagejson.version!,
 };
 
 const client = new ShardClient(TOKEN);
@@ -25,6 +28,13 @@ commandClient.add({
 
 (async () => {
   await client.run();
+  client.gateway.setPresence({
+    activity: {
+      name: `Bhop Bot ${VERSION} | ${PREFIX}help`,
+      type: 1,
+      url: "https://twitch.tv/insyri",
+    },
+  });
   await commandClient.run();
-  await console.log("ok.");
+  process.stdout.write(`Bot Online\nRunning on node v${process.version}\n`); // this is cooler than console.log
 })();
