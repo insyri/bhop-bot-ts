@@ -8,7 +8,6 @@ export async function getFilesInDirectory(dir: string): Promise<string> {
   const filePathsWithExtension = filePaths.filter(
     (filePath) => path.extname(filePath) === ".js"
   );
-  //@ts-ignore
   return chalk.yellow(
     filePathsWithExtension
       .map((e) => e.slice(e.lastIndexOf("\\") + 1))

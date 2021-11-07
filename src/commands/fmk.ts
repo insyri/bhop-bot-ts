@@ -28,7 +28,7 @@ export default class FMK extends BaseCommand {
         description: "Get the latency time of discord's API in milliseconds.",
       },
       run: async (context, args) => {
-        console.log(args);
+        console.log(context, args);
         await context.reply(`[**FMK**] 😮 \`I would f**k ${args}\``);
       },
     });

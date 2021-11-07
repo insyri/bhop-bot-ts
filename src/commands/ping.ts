@@ -5,8 +5,8 @@ import { BaseCommand } from "../basecommand";
 export default class Ping extends BaseCommand {
   constructor(client: CommandClient) {
     super(client, {
-      name: "pinging",
-      aliases: ["p"],
+      name: "ping",
+      aliases: ["p", "latency"],
       help: "Get the latency time of discord's API in milliseconds.",
       metadata: {
         description: "Get the latency time of discord's API in milliseconds.",
