@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { CommandClient, ShardClient } from "detritus-client";
+import * as utils from "./utils";
 
 const packagejson = require("../package.json");
 
@@ -19,22 +20,25 @@ const commandClient = new CommandClient(client, {
   useClusterClient: false,
 });
 
-commandClient.add({
-  name: "ping",
-  run: async (context) => {
-    await context.reply("pong");
-  },
-});
-
 (async () => {
   await client.run();
   client.gateway.setPresence({
     activity: {
-      name: `Bhop Bot ${VERSION} | ${PREFIX}help`,
+      name: `Bhop Bot v${VERSION.slice(0, 1)} | ${PREFIX}help`,
       type: 1,
       url: "https://twitch.tv/insyri",
     },
   });
+  await commandClient
+    .addMultipleIn("./commands", { subdirectories: true })
+    .then(async () => {
+      console.log(
+        `Loaded JavaScript Files: \n\n${await utils.getFilesInDirectory(
+          __dirname + "/commands"
+        )}\n`
+      );
+    })
+    .catch((err) => console.error(err));
   await commandClient.run();
-  process.stdout.write(`Bot Online\nRunning on node v${process.version}\n`); // this is cooler than console.log
+  console.log(`Bot Online\nRunning on node ${process.version}`);
 })();
