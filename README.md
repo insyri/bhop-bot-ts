@@ -1,6 +1,6 @@
 # bhop-bot-ts
 
-Rewrite of Drumman22's bhop bot in TypeScript.
+Rewrite of drumman22's Bhop Bot for the Roblox Bhop / Surf Discord in TypeScript, including legacy functions.
 
 <!---
 drumman22, liquidwater0 was here
