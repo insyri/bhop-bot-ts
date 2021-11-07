@@ -20,6 +20,7 @@ Clone the repository locally:
 
 ```bash
 git clone https://github.com/insyri/bhop-bot-ts.git
+cd bhop-bot-ts
 ```
 
 Install the dependencies:
