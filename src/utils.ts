@@ -15,6 +15,11 @@ export async function getFilesInDirectory(dir: string): Promise<string> {
       .join("\n")
   );
 }
+
+export function firstUppercase(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 /*
 export function isNotUser(payload: GatewayClientEvents.MessageCreate) {
   let author = payload.message.author;
