@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { CommandClient, ShardClient } from "detritus-client";
-import * as utils from "./utils";
+//import * as utils from "./utils";
 
 const packagejson = require("../package.json");
 
@@ -21,9 +21,13 @@ const commandClient = new CommandClient(client, {
 });
 
 client.on("messageCreate", async (payload) => {
-  if (payload.message.author.isMe) return;
-  if (payload.message.content.startsWith(PREFIX)) return;
-  if (Math.random() < 1 / 300) return;
+  let author = payload.message.author;
+  if (author.isWebhook || author.isMe || author.isSystem) return;
+  if (
+    payload.message.content.startsWith(commandClient.prefixes.custom.first()!)
+  )
+    return;
+  if (Math.random() > 1 / 300) return;
   let messages: string[] = [
     "*Allegedly..*",
     ":thinking: *Hmmmm..*",
@@ -33,7 +37,7 @@ client.on("messageCreate", async (payload) => {
     "*Shivers..*",
   ];
   let seed = Math.floor(Math.random() * messages.length);
-  payload.message.reply(messages[seed]);
+  await payload.message.reply(messages[seed]);
 });
 
 (async () => {
@@ -47,12 +51,8 @@ client.on("messageCreate", async (payload) => {
   });
   await commandClient
     .addMultipleIn("./commands", { subdirectories: true })
-    .then(async () => {
-      console.log(
-        `Loaded JavaScript Files: \n\n${await utils.getFilesInDirectory(
-          __dirname + "/commands"
-        )}\n`
-      );
+    .then(async (c) => {
+      console.log(`Loaded ${c.commands.length.toString()} Commands`);
     })
     .catch((err) => console.error(err));
   await commandClient.run();

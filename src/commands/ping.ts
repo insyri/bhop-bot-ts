@@ -19,4 +19,13 @@ export default class Ping extends BaseCommand {
       },
     });
   }
+  /*
+  or: ..?
+    async run(ctx: Command.Context) {
+    await ctx.reply(
+      `${zeroWidthSpace}\nClient: ${(await ctx.client.ping()).rest}ms\n` +
+        `Gateway: ${await ctx.gateway.ping()}ms`
+    );
+  }
+  */
 }

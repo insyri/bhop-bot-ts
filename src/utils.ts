@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
+//import { CommandClient, GatewayClientEvents } from "detritus-client";
 
 export async function getFilesInDirectory(dir: string): Promise<string> {
   const files = await fs.promises.readdir(dir);
@@ -14,5 +15,28 @@ export async function getFilesInDirectory(dir: string): Promise<string> {
       .join("\n")
   );
 }
+/*
+export function isNotUser(payload: GatewayClientEvents.MessageCreate) {
+  let author = payload.message.author;
+  if (author.isWebhook || author.isMe || author.isSystem) return true;
+  return false;
+}
 
+export function messageCreateChecks(
+  payload: GatewayClientEvents.MessageCreate,
+  commandClient: CommandClient
+): boolean {
+  if (isNotUser(payload)) {
+    console.log("u is false");
+    return false;
+  }
+  if (
+    payload.message.content.startsWith(commandClient.prefixes.custom.first()!)
+  ) {
+    console.log("p is false");
+    return false;
+  }
+  return true;
+}
+*/
 export const zeroWidthSpace = "\u200B";

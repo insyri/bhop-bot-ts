@@ -2,7 +2,7 @@
   "name": "bhop-bot-ts",
   "version": "0.0.1",
   "description": "Rewrite of Drumman22's bhop bot in TypeScript.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,6 @@
     "typescript": "^4.4.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.15"
   }
 }
