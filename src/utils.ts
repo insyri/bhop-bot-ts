@@ -20,6 +20,10 @@ export function firstUppercase(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+export function getRng(num: number): number {
+  return Math.floor(Math.random() * num);
+}
+
 /*
 export function isNotUser(payload: GatewayClientEvents.MessageCreate) {
   let author = payload.message.author;

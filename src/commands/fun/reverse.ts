@@ -1,5 +1,5 @@
 import { CommandClient } from "detritus-client";
-import { BaseCommand } from "../basecommand";
+import { BaseCommand } from "../../basecommand";
 
 export default class Reverse extends BaseCommand {
   constructor(client: CommandClient) {

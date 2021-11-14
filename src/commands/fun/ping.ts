@@ -1,6 +1,6 @@
 import { CommandClient } from "detritus-client";
-import { zeroWidthSpace } from "../utils";
-import { BaseCommand } from "../basecommand";
+import { zeroWidthSpace } from "../../utils";
+import { BaseCommand } from "../../basecommand";
 
 export default class Ping extends BaseCommand {
   constructor(client: CommandClient) {

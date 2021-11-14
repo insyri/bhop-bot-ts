@@ -1,5 +1,5 @@
 import { CommandClient } from "detritus-client";
-import { BaseCommand } from "../basecommand";
+import { BaseCommand } from "../../basecommand";
 
 //broken
 export default class FuckMarryKill extends BaseCommand {
@@ -32,7 +32,7 @@ export default class FuckMarryKill extends BaseCommand {
         //args += args.split(" ");
         ////@ts-ignore
         //console.log(args instanceof Array);
-        await ctx.reply(`[**FMK**] 😮 \`I would f**k ${args}\``);
+        await ctx.reply(`[**FMK**] 😮 \`I would f\*\*k ${args}\``);
       },
     });
   }

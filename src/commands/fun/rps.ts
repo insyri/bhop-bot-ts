@@ -1,6 +1,6 @@
 import { CommandClient } from "detritus-client";
-import { BaseCommand } from "../basecommand";
-import { firstUppercase } from "../utils";
+import { BaseCommand } from "../../basecommand";
+import { firstUppercase } from "../../utils";
 
 type RPSInputs = "rock" | "paper" | "scissors";
 type RPSEmojis = "👊" | "🖐" | "✌";
