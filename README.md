@@ -10,9 +10,9 @@ drumman22, liquidwater0 was here
 
 ## Requirements
 
-bhop-bot-ts is built on node.js v17.0.1, but it should work for LTS v16.
+bhop-bot-ts is built on Node.js v17.0.1, but it should work for the LTS v16.
 
-[install nodejs](https://nodejs.org/)
+[Install Node.js](https://nodejs.org/)
 
 ## Setup & Running
 
