@@ -51,7 +51,7 @@ export default class Insardia extends BaseCommand {
                 if (word[wi]!.match(alpha)) { 
                   
                 } 
-              } // i GOIODN IGHTheart
+              } // i GOIODN IGHT❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤
             }
           } // YEP OK GNN NN ♥♥♥♥♥♥♥♥♥♥❤❤❤❤❤❤
           i++;
