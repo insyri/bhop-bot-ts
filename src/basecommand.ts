@@ -1,11 +1,10 @@
 import { Command } from "detritus-client";
+import { ParsedArgs } from "detritus-client/lib/command";
 
 export class BaseCommand<
   ParsedArgsFinished = Command.ParsedArgs
 > extends Command.Command<ParsedArgsFinished> {
-  triggerTypingAfter = 1000;
-
-  async onRunError(ctx: Command.Context, args: ParsedArgsFinished, error: any) {
+  async onRunError(ctx: Command.Context, args: ParsedArgs, error: any) {
     ctx.reply(`An error occurred: ${error}\nWith these arguments: ${args}`);
   }
 

@@ -1,4 +1,4 @@
-import { CommandClient } from "detritus-client";
+import { Command, CommandClient } from "detritus-client";
 import { BaseCommand } from "../../basecommand";
 
 export default class Roll extends BaseCommand {
@@ -16,15 +16,15 @@ export default class Roll extends BaseCommand {
       help: "Roll a number up to any number, default is 100.",
       metadata: {
         description: "Roll a number up to any number, default is 100.",
-      },
-      run: async (ctx, args: { max: number; roll: string }) => {
-        console.log(args);
-        await ctx.reply(
-          `[**Roll**] 🎲 \`${Math.floor(
-            Math.random() * Number(args.roll || args.max)
-          )}\``
-        );
-      },
+      }
     });
+  }
+  async run(ctx: Command.Context, args: { max: number; roll: string }) {
+    console.log(args);
+    await ctx.reply(
+      `[**Roll**] 🎲 \`${Math.floor(
+        Math.random() * Number(args.roll || args.max)
+      )}\``
+    );
   }
 }

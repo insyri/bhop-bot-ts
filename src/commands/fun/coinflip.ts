@@ -1,4 +1,4 @@
-import { CommandClient } from "detritus-client";
+import { Command, CommandClient } from "detritus-client";
 import { BaseCommand } from "../../basecommand";
 
 export default class CoinFlip extends BaseCommand {
@@ -10,13 +10,13 @@ export default class CoinFlip extends BaseCommand {
       metadata: {
         description: "Flip a coin.",
       },
-      run: async (ctx) => {
-        await ctx.reply(
-          `[**CoinFlip**] 🪙 Landed on **${
-            Math.random() > 0.5 ? "Tails" : "Heads"
-          }**`
-        ); // 🪙 : https://emojipedia.org/coin/
-      },
     });
+  }
+  async run(ctx: Command.Context) {
+    await ctx.reply(
+      `[**CoinFlip**] 🪙 Landed on **${
+        Math.random() > 0.5 ? "Tails" : "Heads"
+      }**`
+    ); // 🪙 : https://emojipedia.org/coin/
   }
 }

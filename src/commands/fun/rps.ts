@@ -1,4 +1,4 @@
-import { CommandClient } from "detritus-client";
+import { Command, CommandClient } from "detritus-client";
 import { BaseCommand } from "../../basecommand";
 import { firstUppercase } from "../../utils";
 
@@ -65,27 +65,27 @@ export default class RockPaperscissors extends BaseCommand {
       metadata: {
         description: "Play Rock Paper Scissors.",
       },
-      run: async (ctx, args: { rps: RPSInputs }) => {
-        if (!args.rps) return await ctx.reply("You need to choose a decision.");
-        let rps_ = Array.from(RPSEmojisMap.keys());
-        if (rps_.some((x) => x === args.rps)) {
-          let rnd: number = Math.floor(Math.random() * rps_.length);
-          let botchoice = rps_[rnd]!;
-          let outcome = evalRps(args.rps, botchoice);
-          let result = `[**RPS**] I'm choosing **${firstUppercase(
-            botchoice
-          )}**! ${RPSEmojisMap.get(botchoice)} ${
-            outcome?.returning === "It's a draw!"
-              ? outcome
-              : `**${
-                  outcome?.whoWon! === "bot"
-                    ? botchoice.toUpperCase()
-                    : args.rps.toUpperCase()
-                }** ${outcome?.returning}`
-          }!`;
-          await ctx.reply(result);
-        } else ctx.reply("Please choose a valid option.");
-      },
     });
+  }
+  async run(ctx: Command.Context, args: { rps: RPSInputs }) {
+    if (!args.rps) return await ctx.reply("You need to choose a decision.");
+    let rps_ = Array.from(RPSEmojisMap.keys());
+    if (rps_.some((x) => x === args.rps)) {
+      let rnd: number = Math.floor(Math.random() * rps_.length);
+      let botchoice = rps_[rnd]!;
+      let outcome = evalRps(args.rps, botchoice);
+      let result = `[**RPS**] I'm choosing **${firstUppercase(
+        botchoice
+      )}**! ${RPSEmojisMap.get(botchoice)} ${
+        outcome?.returning === "It's a draw!"
+          ? outcome
+          : `**${
+              outcome?.whoWon! === "bot"
+                ? botchoice.toUpperCase()
+                : args.rps.toUpperCase()
+            }** ${outcome?.returning}`
+      }!`;
+      await ctx.reply(result);
+    } else ctx.reply("Please choose a valid option.");
   }
 }
