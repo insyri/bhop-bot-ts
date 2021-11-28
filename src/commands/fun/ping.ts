@@ -1,5 +1,5 @@
 import { Command, CommandClient } from "detritus-client";
-import { zeroWidthSpace } from "../../utils";
+import { consts } from "../../utils";
 import { BaseCommand } from "../../basecommand";
 
 export default class Ping extends BaseCommand {
@@ -8,15 +8,15 @@ export default class Ping extends BaseCommand {
       name: "ping",
       aliases: ["p", "latency"],
       help: "Get the latency time of discord's API in milliseconds.",
-      metadata: {
-        description: "Get the latency time of discord's API in milliseconds.",
-      },
     });
   }
-  async run(ctx: Command.Context) {
+  async run(ctx: Command.Context, args: string) {
     await ctx.reply(
-      `${zeroWidthSpace}\nClient: ${(await ctx.client.ping()).rest}ms\n` +
-        `Gateway: ${await ctx.gateway.ping()}ms`
+      `${args === "-c" ? "" : consts.zeroWidthSpace}\nClient: ${
+        (
+          await ctx.client.ping()
+        ).rest
+      }ms\n` + `Gateway: ${await ctx.gateway.ping()}ms`
     );
   }
 }

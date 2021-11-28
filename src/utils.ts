@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
-//import { CommandClient, GatewayClientEvents } from "detritus-client";
 
 export async function getFilesInDirectory(dir: string): Promise<string> {
   const files = await fs.promises.readdir(dir);
@@ -22,6 +21,30 @@ export function firstUppercase(str: string): string {
 
 export function getRng(num: number): number {
   return Math.floor(Math.random() * num);
+}
+
+export async function loadFile(location: string): Promise<string | Error> {
+  return fs.readFileSync(location, "utf8");
+}
+
+export namespace consts {
+  export const zeroWidthSpace = "\u200B";
+  export const monthRoleId = "914308971173650442";
+  export const eventRoleId = "914308971173650442";
+  export const evalTrustedIds = [
+    "697004725123416095", //this is me i think that is indeed me
+    "139853736355823617",
+    "127283921787289600", //who are these peoples LFG
+  ];
+}
+
+export namespace responses {
+  export const cancel = {
+    missing_dev: "This command is reserved to eval trusted personel.",
+  };
+  export const error = {
+    idk: "I don't know what fucking happened.",
+  };
 }
 
 /*
@@ -48,4 +71,3 @@ export function messageCreateChecks(
   return true;
 }
 */
-export const zeroWidthSpace = "\u200B";
