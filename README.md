@@ -3,7 +3,7 @@
 Rewrite of drumman22's Bhop Bot for the Roblox Bhop / Surf Discord in TypeScript, including legacy functions.
 
 <!---
-drumman22, liquidwater0 was here
+drumman22, liquidwater0, doge, cool doggo was here
 -->
 
 # How to run
