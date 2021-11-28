@@ -1,3 +1,4 @@
+/*
 import { Command, CommandClient, Constants, Utils } from "detritus-client";
 import { BaseCommand } from "../../basecommand";
 import { consts, responses } from "../../utils";
@@ -74,3 +75,4 @@ export default class Eval extends BaseCommand {
     return await ctx.editOrReply({ embed });
   }
 }
+*/
