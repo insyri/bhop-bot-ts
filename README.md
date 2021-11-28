@@ -16,29 +16,38 @@ bhop-bot-ts is built on Node.js v17.0.1, but it should work for the LTS v16.
 
 ## Setup & Running
 
-Clone the repository locally:
+1. Clone the repository locally:
 
 ```bash
 git clone https://github.com/insyri/bhop-bot-ts.git
 cd bhop-bot-ts
 ```
 
-Install the dependencies:
+2. Install the dependencies:
 
-```
+```bash
 npm i
 ```
 
-Populate the `.env` file, see the `.env.example` file.
+3. Populate the `.env` file;see the `.env.example` file.
 
-Compile:
 
+### For hosting:
+
+```bash
+tsc
+node dist
 ```
+
+### For development testing (live updates):
+
+```bash
 tsc -w
 ```
 
-Run:
+In another terminal:
 
-```
+```bash
+npm i nodemon -D
 nodemon dist
 ```
