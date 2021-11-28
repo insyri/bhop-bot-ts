@@ -33,8 +33,6 @@ export default class Insardia extends BaseCommand {
       let words = line.split(" ");
       let formatted_words: string[] = [];
       for (let word of words) {
-        console.log(word);
-        console.log(word);
         let new_word = "";
         let rng = getRng(30);
 
@@ -44,7 +42,6 @@ export default class Insardia extends BaseCommand {
 
         for (let index = 0; index < word.length; index++) {
           let letter = word[index];
-          console.log(word, letter);
           if (!letter) return;
           if (word.length - 1 > 3) {
             if (index > 0 && index < word.length - 1) {
