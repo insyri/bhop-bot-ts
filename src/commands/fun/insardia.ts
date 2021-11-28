@@ -1,6 +1,6 @@
 import { Command, CommandClient } from "detritus-client";
 import { BaseCommand } from "../../basecommand";
-import { getRng } from "../../utils";
+import { getRng, sanitizeString } from "../../utils";
 
 // https://gist.github.com/insyri/a943853042f818682fafd642af029f82
 
@@ -80,7 +80,7 @@ export default class Insardia extends BaseCommand {
       }
       formatted_string += formatted_words.join(" ") + "\n";
     }
-    await ctx.reply(formatted_string.trim());
+    await ctx.reply(sanitizeString(formatted_string.trim()));
   }
 }
 

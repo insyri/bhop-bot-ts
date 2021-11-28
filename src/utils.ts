@@ -1,3 +1,5 @@
+import { Markup } from "detritus-client/lib/utils";
+
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
@@ -25,6 +27,10 @@ export function getRng(num: number): number {
 
 export async function loadFile(location: string): Promise<string | Error> {
   return fs.readFileSync(location, "utf8");
+}
+
+export function sanitizeString(str: string): string {
+  return str.replace(Markup.Regexes.EVERYONE, "");
 }
 
 export namespace consts {
