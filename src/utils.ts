@@ -29,8 +29,11 @@ export async function loadFile(location: string): Promise<string | Error> {
   return fs.readFileSync(location, "utf8");
 }
 
-export function sanitizeString(str: string): string {
-  return str.replace(Markup.Regexes.EVERYONE, "");
+export function cleanup(str: string): string {
+  str = str.replace(Markup.Regexes.EVERYONE, "");
+  str = str.replaceAll("  ", " ");
+  str = str.replaceAll(/(\>{2}|\<{2})/g, "");
+  return str;
 }
 
 export namespace consts {
@@ -38,9 +41,9 @@ export namespace consts {
   export const monthRoleId = "914308971173650442";
   export const eventRoleId = "914308971173650442";
   export const evalTrustedIds = [
-    "697004725123416095", //this is me i think that is indeed me
+    "697004725123416095",
     "139853736355823617",
-    "127283921787289600", //who are these peoples LFG
+    "127283921787289600",
   ];
 }
 
