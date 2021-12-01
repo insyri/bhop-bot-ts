@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { CommandClient, ShardClient } from "detritus-client";
-//import * as utils from "./utils";
 
 const packagejson = require("../package.json");
 
