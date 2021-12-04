@@ -6,8 +6,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependency"
 #    ignore:
 #      - dependency-name: "node-fetch"
 #    target-branch: "dev"
