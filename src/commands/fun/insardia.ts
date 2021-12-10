@@ -59,18 +59,8 @@ export default class Insardia extends BaseCommand {
             }
           }
 
-          if (index === 0) {
-            rng = getRng(50);
-            if (rng == 1) {
-              new_word += letter + letter;
-            }
-          }
-
-          if (index === word.length - 1) {
-            rng = getRng(50);
-            if (rng == 1) {
-              new_word += letter + letter;
-            }
+          if (index === 0 || index === word.length - 1) {
+            if (getRng(50) === 1) new_word += letter.repeat(2);
           }
 
           new_word += letter;
