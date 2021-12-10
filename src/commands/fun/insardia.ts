@@ -25,50 +25,41 @@ export default class Insardia extends BaseCommand {
     });
   }
   async run(ctx: Command.Context, args: { insardia: string }) {
-    let lines = args.insardia.split("\n");
-    let formatted_string = "";
-    for (let line of lines) {
-      let words = line.split(" ");
-      let formatted_words: string[] = [];
-      for (let word of words) {
-        for (const property in Regexes) {
-          if (word.match(Regexes[property]!) || [" ", "\n"].includes(word))
-            break;
-        }
-        let new_word = "";
-        let rng = getRng(30);
+    let words = args.insardia.split(" ");
+    let formatted_words: string[] = [];
+    for (let word of words) {
+      for (const property in Regexes) {
+        if (word.match(Regexes[property]!) || [" ", "\n"].includes(word)) break;
+      }
+      let new_word = "";
+      let rng = getRng(30);
 
-        if (alternatives.has(word))
-          formatted_words.push(alternatives.get(word)[rng]);
-        if (word.length - 1 >= 3 && rng == 1) formatted_words.push(word);
+      if (alternatives.has(word))
+        formatted_words.push(alternatives.get(word)[rng]);
+      if (word.length - 1 >= 3 && rng == 1) formatted_words.push(word);
 
-        for (let index = 0; index < word.length; index++) {
-          let letter = word[index];
-          if (!letter) return;
-          if (word.length - 1 > 3) {
-            if (index > 0 && index < word.length - 1) {
-              let alpha = /[a-zA-Z]/;
-              if (word[index + 1]?.match(alpha)) {
-                if (word[index + 1] == letter) {
-                  continue;
-                }
-                if (vowels.includes(letter)) {
-                  continue;
-                }
+      for (let index = 0; index < word.length; index++) {
+        let letter = word[index]!;
+        if (word.length - 1 > 3) {
+          if (index > 0 && index < word.length - 1) {
+            let alpha = /[a-zA-Z]/;
+            if (word[index + 1]?.match(alpha)) {
+              if (word[index + 1] == letter) {
+                continue;
+              }
+              if (vowels.includes(letter)) {
+                continue;
               }
             }
           }
-
-          if (index === 0 || index === word.length - 1) {
-            if (getRng(50) === 1) new_word += letter.repeat(2);
-          }
-
-          new_word += letter;
         }
-        formatted_words.push(new_word);
+
+        if ((index === 0 || index === word.length - 1) && getRng(50) === 1)
+          new_word += letter.repeat(2);
+        new_word += letter;
       }
-      formatted_string += formatted_words.join(" ") + "\n";
+      formatted_words.push(new_word);
     }
-    await ctx.reply(cleanup(formatted_string));
+    await ctx.reply(cleanup(formatted_words.join(" ")));
   }
 }
