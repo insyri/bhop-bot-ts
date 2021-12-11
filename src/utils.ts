@@ -36,7 +36,7 @@ export function cleanup(str: string): string {
   return str;
 }
 
-export namespace consts {
+export module consts {
   export const zeroWidthSpace = "\u200B";
   export const monthRoleId = "914308971173650442";
   export const eventRoleId = "914308971173650442";
@@ -47,7 +47,7 @@ export namespace consts {
   ];
 }
 
-export namespace responses {
+export module responses {
   export const cancel = {
     missing_dev: "This command is reserved to eval trusted personel.",
   };

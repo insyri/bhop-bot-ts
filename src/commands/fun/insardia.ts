@@ -5,14 +5,15 @@ import { getRng, cleanup } from "../../utils";
 
 // https://gist.github.com/insyri/a943853042f818682fafd642af029f82
 
+let alpha = /[a-zA-Z]/;
 let vowels = ["a", "e", "i", "o", "u"];
-let alternatives = new Map();
-alternatives.set("hi", ["hi", "hizies"]),
-  alternatives.set("hey", ["hey", "heya"]),
-  alternatives.set("and", ["and", "n"]),
-  alternatives.set("you", ["yu", "you", "u"]),
-  alternatives.set("are", ["are", "r"]),
-  alternatives.set("got", ["got", "gto", "tog"]);
+let alternatives: Map<string, string[]> = new Map([
+  ["hi", ["hi", "hizies"]],
+  ["hey", ["hey", "heya"]],
+  ["and", ["and", "n"]],
+  ["you", ["yu", "you", "u"]],
+  ["are", ["are", "r"]],
+]);
 
 export default class Insardia extends BaseCommand {
   constructor(client: CommandClient) {
@@ -28,31 +29,24 @@ export default class Insardia extends BaseCommand {
     let words = args.insardia.split(" ");
     let formatted_words: string[] = [];
     for (let word of words) {
-      for (const property in Regexes) {
+      for (const property in Regexes)
         if (word.match(Regexes[property]!) || [" ", "\n"].includes(word)) break;
-      }
       let new_word = "";
       let rng = getRng(30);
 
       if (alternatives.has(word))
-        formatted_words.push(alternatives.get(word)[rng]);
+        formatted_words.push(alternatives.get(word)![rng]!);
       if (word.length - 1 >= 3 && rng == 1) formatted_words.push(word);
 
       for (let index = 0; index < word.length; index++) {
         let letter = word[index]!;
-        if (word.length - 1 > 3) {
-          if (index > 0 && index < word.length - 1) {
-            let alpha = /[a-zA-Z]/;
-            if (word[index + 1]?.match(alpha)) {
-              if (word[index + 1] == letter) {
+
+        // why is this here?
+        if (word.length - 1 > 3)
+          if (index < word.length - 1)
+            if (word[index + 1]?.match(alpha))
+              if (word[index + 1] == letter || vowels.includes(letter))
                 continue;
-              }
-              if (vowels.includes(letter)) {
-                continue;
-              }
-            }
-          }
-        }
 
         if ((index === 0 || index === word.length - 1) && getRng(50) === 1)
           new_word += letter.repeat(2);
