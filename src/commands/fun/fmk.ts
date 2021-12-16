@@ -31,7 +31,7 @@ export default class FuckMarryKill extends BaseCommand {
       ] as IFuckMarryKill[],
       help: "FMK",
       metadata: {
-        description: "Get the latency time of discord's API in milliseconds.",
+        category: "Fun",
       },
     });
   }

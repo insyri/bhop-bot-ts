@@ -8,7 +8,7 @@ export default class CoinFlip extends BaseCommand {
       aliases: ["cf", "flip", "cointoss"],
       help: "Flip a coin.",
       metadata: {
-        description: "Flip a coin.",
+        category: "Fun",
       },
     });
   }

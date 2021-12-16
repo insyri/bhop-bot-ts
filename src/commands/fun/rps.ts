@@ -5,11 +5,11 @@ import { firstUppercase } from "../../utils";
 type RPSInputs = "rock" | "paper" | "scissors";
 type RPSEmojis = "👊" | "🖐" | "✌";
 
-let RPSEmojisMap = new Map<RPSInputs, RPSEmojis>();
-
-RPSEmojisMap.set("rock", "👊");
-RPSEmojisMap.set("paper", "🖐");
-RPSEmojisMap.set("scissors", "✌");
+let RPSEmojisMap = new Map<RPSInputs, RPSEmojis>([
+  ["rock", "👊"],
+  ["paper", "🖐"],
+  ["scissors", "✌"],
+]);
 
 interface evalRpsResult {
   returning: "It's a draw!" | "wins" | "loses" | "bruh";
@@ -63,7 +63,7 @@ export default class RockPaperscissors extends BaseCommand {
       help: "Play Rock Paper Scissors.",
       //args: [{ name: "decision", label: "decision", required: true }],
       metadata: {
-        description: "Play Rock Paper Scissors.",
+        category: "Fun",
       },
     });
   }
