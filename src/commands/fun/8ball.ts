@@ -8,7 +8,7 @@ export default class EightBall extends BaseCommand {
       aliases: ["8b", "fortune"],
       help: "Grant your fortune with the magic 8ball.",
       metadata: {
-        description: "Grant your fortune with the magic 8ball.",
+        category: "Fun",
       },
     });
   }

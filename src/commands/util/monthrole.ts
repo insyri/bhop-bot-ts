@@ -7,6 +7,9 @@ export default class MonthRole extends BaseCommand {
     super(client, {
       name: "monthrole",
       help: "Give or remove the Month Role",
+      metadata: {
+        category: "Util",
+      },
     });
   }
   async run(ctx: Command.Context) {

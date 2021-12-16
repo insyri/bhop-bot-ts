@@ -7,6 +7,9 @@ export default class EventRole extends BaseCommand {
     super(client, {
       name: "eventrole",
       help: "Give or remove the Event Role",
+      metadata: {
+        category: "Util",
+      },
     });
   }
   async run(ctx: Command.Context) {

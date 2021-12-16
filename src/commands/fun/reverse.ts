@@ -8,8 +8,8 @@ export default class Reverse extends BaseCommand {
       help: "Flip words in the reverse.",
       //args: [{ name: "decision", label: "decision", required: true }],
       metadata: {
-        description: "Flip words in the reverse.",
-      }
+        category: "Fun",
+      },
     });
   }
   async run(ctx: Command.Context, args: { reverse: string }) {

@@ -55,6 +55,9 @@ export module responses {
     idk: "I don't know what fucking happened.",
   };
 }
+// https://stackoverflow.com/a/53060314/15325967
+export const insertAt = (str: string, sub: string, pos: number) =>
+  `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
 
 /*
 export function isNotUser(payload: GatewayClientEvents.MessageCreate) {

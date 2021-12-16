@@ -21,7 +21,7 @@ export default class Insardia extends BaseCommand {
       name: "insardia",
       help: "Speak lke insrda!!",
       metadata: {
-        description: "Speak lke insrda!!",
+        category: "Fun",
       },
     });
   }
@@ -45,10 +45,14 @@ export default class Insardia extends BaseCommand {
         if (word.length - 1 > 3)
           if (index < word.length - 1)
             if (word[index + 1]?.match(alpha))
+              // would only get rid of vowels if word was longer than 3 letters
               if (word[index + 1] == letter || vowels.includes(letter))
+                // do not remove vowels if is last or first
+                // if words with two of the same characters get rid of one of them OR if the letter is a vowel get rid of it
                 continue;
 
         if ((index === 0 || index === word.length - 1) && getRng(50) === 1)
+          // the first or end would be repeated sometimes
           new_word += letter.repeat(2);
         new_word += letter;
       }
