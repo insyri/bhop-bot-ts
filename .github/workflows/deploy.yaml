@@ -1,0 +1,14 @@
+name: Deploy To Oracle VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Oracle
+        run: "echo pretend im useful"
