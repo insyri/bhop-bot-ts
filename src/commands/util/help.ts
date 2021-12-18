@@ -75,7 +75,7 @@ export default class Insardia extends BaseCommand {
         maps         
         personalbest Disabled
         worldrecord  
-      ​No Category:
+      No Category:
         help         Shows this message
 
       Type #!help command for more info on a command.
