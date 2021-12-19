@@ -11,7 +11,7 @@ const { TOKEN, PREFIX, VERSION } = {
   VERSION: <string>packagejson.version!,
 };
 
-const client = new ShardClient(TOKEN);
+export const client = new ShardClient(TOKEN);
 
 const commandClient = new CommandClient(client, {
   prefix: PREFIX,
