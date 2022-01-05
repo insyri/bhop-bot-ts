@@ -1,8 +1,7 @@
+import chalk from "chalk";
 import { Markup } from "detritus-client/lib/utils";
-
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 
 export async function getFilesInDirectory(dir: string): Promise<string> {
   const files = await fs.promises.readdir(dir);
@@ -44,6 +43,7 @@ export module consts {
     "697004725123416095",
     "139853736355823617",
     "127283921787289600",
+    "504698587221852172",
   ];
 }
 

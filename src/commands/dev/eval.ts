@@ -1,9 +1,8 @@
-/*
 import { Command, CommandClient, Constants, Utils } from "detritus-client";
+import { Embed, Markup } from "detritus-client/lib/utils";
+import { transpile } from "typescript";
 import { BaseCommand } from "../../basecommand";
 import { consts, responses } from "../../utils";
-import { transpile } from "typescript";
-import { Embed, Markup } from "detritus-client/lib/utils";
 
 interface EvalArgs {
   code: string;
@@ -75,4 +74,3 @@ export default class Eval extends BaseCommand {
     return await ctx.editOrReply({ embed });
   }
 }
-*/
