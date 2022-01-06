@@ -5,7 +5,7 @@
     "incremental": false, // tsconfig.tsbuildinfo
     "composite": false, // tsconfig.tsbuildinfo
     // These don't do anything, nice typescript, really cool.
-    "target": "ES2021",
+    "target": "ESNext",
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
