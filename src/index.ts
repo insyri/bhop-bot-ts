@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { CommandClient, ShardClient } from "detritus-client";
+import { ChannelBase } from "detritus-client/lib/structures";
 
 const packagejson = require("../package.json");
 
@@ -11,7 +12,7 @@ const { TOKEN, PREFIX, VERSION } = {
   VERSION: <string>packagejson.version!,
 };
 
-const client = new ShardClient(TOKEN);
+export const client = new ShardClient(TOKEN);
 
 const commandClient = new CommandClient(client, {
   prefix: PREFIX,
@@ -37,6 +38,31 @@ client.on("messageCreate", async (payload) => {
   ];
   let seed = Math.floor(Math.random() * messages.length);
   await payload.message.reply(messages[seed]);
+});
+
+client.on("messageReactionAdd", async (payload) => {
+  if (payload.reaction.emoji.name !== "⭐") return;
+  //if (payload.reaction.count !== 10) return;
+
+  const starboardChannel: ChannelBase | undefined =
+    client.channels.get("773611028075380776") ||
+    (await client.rest.fetchChannel("773611028075380776"));
+
+  console.log(payload);
+
+  if (starboardChannel.canMessage)
+    client.rest.createMessage(starboardChannel!.id, {
+      embed: {
+        color: 0xbdaf4d,
+        author: {
+          iconUrl: payload.message?.author.avatarUrl,
+          name: payload.message?.author?.username,
+        },
+        fields: [{ name: "Source", value: payload.message?.jumpLink! }],
+        description: payload.message?.content || "content",
+      },
+      content: `💫 <#${payload.channelId}>`,
+    });
 });
 
 (async () => {
