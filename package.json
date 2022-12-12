@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/insyri/bhop-bot-ts#readme",
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.2.0",
     "detritus-client": "^0.16.3",
     "dotenv": "16.0.1"
   },
